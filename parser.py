@@ -35,6 +35,8 @@ class Parser(object):
     def _check_command(self, noun, verb):
         if not noun or not verb:
             return False
+        print 'Noun:', noun
+        print 'Verb:', verb
         return self.nouns[noun] & self.verbs[verb]
 
     def parse(self, command):
@@ -57,4 +59,5 @@ class Parser(object):
                     c_noun = x
                 command_modules = self._check_command(c_noun, c_verb)
                 if command_modules:
-                    yield Command(command, c_noun, c_verb, [])
+                    yield Command(command, c_noun, c_verb, [x for x in words if x not in (c_noun, c_verb)])
+                    c_noun = None

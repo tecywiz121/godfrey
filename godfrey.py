@@ -2,7 +2,6 @@
 # Godfrey is a command line natural language command interpreter.
 # godfrey.py is the point of entry, point of exit, and controller of the Godfrey program.
 
-import sys
 import modules
 from parser import Parser
 
@@ -30,13 +29,19 @@ def godfrey(text):
         # print the output of each response and exit with the proper code
         for response in responses:
             print response.message
-            if response.status == response.OBTUSE:
+            if response.status == response.STATUS_SUCCESS:
+                pass
+            elif response.status == response.STATUS_OBTUSE:
                 exit(3)
-            elif not response.status == response.FAILED:
+            elif response.status == response.STATUS_FAILED:
                 exit(2)
             else:
                 print "Godfrey made an error. Godfrey was an error."
                 exit(1)
 
 # Join the command into one string and pass to the main function
-godfrey(' '.join(sys.argv[1:]))
+while True:
+    i = raw_input('>> ')
+    if i == 'quit':
+        exit()
+    godfrey(i)

@@ -1,5 +1,6 @@
 import subprocess
 import module
+from response import Response
 
 class RunnerModule(module.Module):
     '''modulePath: path to the module, arg: parameters to pass'''
@@ -27,4 +28,5 @@ class RunnerModule(module.Module):
         return (command.noun in self.nouns and command.verb in self.verbs)
 
     def run(self, command):
-        subprocess.call([command.noun])
+        output = subprocess.check_output(command.parameters)
+        return Response(Response.STATUS_SUCCESS, output)
