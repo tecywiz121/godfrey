@@ -18,7 +18,7 @@ def godfrey(command):
     # Use the command object to decide what module(s) qualify to run it.
     qualifying_modules = []
     for module in all_modules:
-        if module.handles_command(command):
+        if module.can_handle(command):
             qualifying_modules.append(module)
 
     # Pass the command to each qualifying module and save the response.
