@@ -23,3 +23,8 @@ class Module(object):
         :type verb: str
         :returns: bool -- True if this module handles this command'''
         raise NotImplemented
+
+    @abstractmethod
+    def run(self, command):
+        '''Execute a command'''
+        raise NotImplemented
