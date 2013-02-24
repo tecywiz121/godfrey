@@ -1,1 +1,6 @@
+PyYAML==3.10
+argparse==1.2.1
+distribute==0.6.24
+git+https://github.com/nltk/nltk.git#nltk==3.0a1
 wsgiref==0.1.2
+numpy==1.7.0
