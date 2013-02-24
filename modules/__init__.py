@@ -16,7 +16,8 @@ def all_modules():
     feature_modules = [importlib.import_module("modules." + pyfile) for pyfile in pyfiles]
     feature_classes = []
     for m in feature_modules:
-        feature_classes.extend([getattr(m, x) for x in dir(m) if not x.startswith("__") and not x == "module"])
-    feature_classes = [x() for x in feature_classes if issubclass(x, module.Module)]
+        feature_classes.extend([getattr(m, x) for x in dir(m) if not x.startswith("__")])
+    print feature_classes
+    feature_classes = [x() for x in feature_classes if isinstance(x, type) and issubclass(x, module.Module)]
 
     return feature_classes

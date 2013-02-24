@@ -1,7 +1,7 @@
 from nltk import pos_tag, word_tokenize, Tree
 from nltk.parse.malt import MaltParser
 from collections import defaultdict
-from .command import Command
+from command import Command
 
 class Parser(object):
     '''Write something here.'''
@@ -58,6 +58,3 @@ class Parser(object):
                 command_modules = self._check_command(c_noun, c_verb)
                 if command_modules:
                     yield Command(command, c_noun, c_verb, [])
-
-        import code
-        code.interact(local=locals())

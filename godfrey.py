@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Godfrey is a command line natural language command interpreter.
 # godfrey.py is the point of entry, point of exit, and controller of the Godfrey program.
 
