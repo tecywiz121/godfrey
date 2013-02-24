@@ -1,3 +1,4 @@
 import modRunner
 
-modRunner.winRunner("C:\hello.py", "what a wonderfull world")
+run = modRunner.RunFile()
+run.winRunner("C:\hello.py", "what a wonderfull world")
