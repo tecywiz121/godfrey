@@ -12,7 +12,7 @@ def godfrey(command):
     all_modules = modules.all_modules()
 
     # create a parser with the modules and parse the command
-    parser = Parser(modules)
+    parser = Parser(all_modules)
     command = parser.parse(command)
 
     # Use the command object to decide what module(s) qualify to run it.
