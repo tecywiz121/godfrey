@@ -10,6 +10,12 @@ except ImportError:
 
 class itunesModule(module.Module):
     ''''''
+    def winRun(self, command):
+        if (command.verb in ['play', 'shuffle']):
+            self.winShuffleAll(1)
+        if (command.verb in ['next', 'previous']):
+            self.winNext
+            
     def winSuffleAll(self, trackNum):
         if OS_WINDOWS:
     		iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
@@ -25,23 +31,25 @@ class itunesModule(module.Module):
     		except:
     			print "Failed to play song, check iTunes for message"
     		
-    		#playlist = playlists(2)
-    		#tracks = playlist.Tracks
-    		#track = tracks.ItemByPlayOrder(2)
-    		#print track.Name
-    		#track.Play()
+    def winNext(self):
+        iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
+        iTunes.NextTrack()
 		
     @property
     def verbs(self):
-        return ['play', 'shuffle']
+        return ['play', 'shuffle', 'next']
 
     @property
     def nouns(self):
-        return ['*']
+        return ['music', 'video', 'itunes']
 
     def can_handle(self, command):
-        return (command.noun in self.nouns and command.verb in self.verbs)
+        return (command.noun in self.nouns and command.verb in self.verbs and self.OS_WINDOWS == true)
 
     def run(self, command):
-        return Response(Response.STATUS_SUCCESS)
+        if (can_handle(command)):
+            self.winRun(command)
+            return Response(Response.STATUS_SUCCESS)
+        else:
+            return Response(Response.STATUS_FAILED)
         
