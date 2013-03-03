@@ -71,23 +71,21 @@ class itunesModule(module.Module):
         iTunes = self.winGetItunes()
         iTunes.Quit()
        
-#    def winMute(self):
-#        iTunes = self.winGetItunes()
-#        iTunes.Mute(-1)
+    def winMute(self):
+        iTunes = self.winGetItunes()
+        iTunes.Mute = True
 
-#    def winUnMute(self):
-#        iTunes = self.winGetItunes()
-#        iTunes.Mute(0)
+    def winUnMute(self):
+        iTunes = self.winGetItunes()
+        iTunes.Mute = False
  
-#    def winVolumeUp(self):
-#        iTunes = self.winGetItunes()
-#        volume = iTunes.SoundVolume()        
-#        iTunes.SoundVolume(volume + 10)
+    def winVolumeUp(self):
+        iTunes = self.winGetItunes()
+        iTunes.SoundVolume += 10
         
-#    def winVolumeDown(self):
-#        iTunes = self.winGetItunes()
-#        volume = iTunes.SoundVolume()        
-#        iTunes.SoundVolume(volume - 10)
+    def winVolumeDown(self):
+        iTunes = self.winGetItunes()
+        iTunes.SoundVolume -= 10
 
     @property
     def verbs(self):
