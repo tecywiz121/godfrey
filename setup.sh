@@ -22,7 +22,7 @@ mv maltparser-1.7.2 maltparse
 mv maltparse/maltparser-1.7.2.jar maltparse/malt.jar
 
 wait $WGET_GRAMMAR_PID
-mv engmalt.linear-1.7.mco maltparse/engmalt.linear-1.2.mco
+mv engmalt.linear-1.7.mco maltparse/engmalt.linear-1.7.mco
 
 # pip
 wait $VENV_INSTALL_PID
