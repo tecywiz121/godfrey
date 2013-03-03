@@ -4,7 +4,10 @@ import module
 OS_WINDOWS = True
 try:
     from win32com.client import Dispatch
+    import pythoncom
+    import win32api
     import win32com.client
+
 except ImportError:
     OS_WINDOWS = False
 
@@ -32,9 +35,27 @@ class itunesModule(module.Module):
     			print "Failed to play song, check iTunes for message"
     		
     def winNext(self):
-        iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
-        iTunes.NextTrack()
-		
+        if OS_WINDOWS:
+            context = pythoncom.CreateBindCtx (0)
+            iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
+            for moniker in pythoncom.GetRunningObjectTable ():
+                name = moniker.GetDisplayName (context, None)
+                if (name == 'clsid:BBEB08F8-9126-4E20-AAD3-70B470144C72'):
+                    iTunes = moniker
+                print name
+            iTunes.NextTrack()
+	
+    def winPrevious(self):
+        if OS_WINDOWS:
+            context = pythoncom.CreateBindCtx (0)
+            iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
+            for moniker in pythoncom.GetRunningObjectTable ():
+                name = moniker.GetDisplayName (context, None)
+                if (name == 'clsid:BBEB08F8-9126-4E20-AAD3-70B470144C72'):
+                    iTunes = moniker
+                print name
+            iTunes.PreviousTrack()
+	
     @property
     def verbs(self):
         return ['play', 'shuffle', 'next']
