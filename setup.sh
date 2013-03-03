@@ -30,6 +30,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 PIP_INSTALL_PID=$!
 
+echo "import nltk; nltk.download(); exit()" > python
+
 # done!
 echo "######################################################################"
 echo "All set!  Run 'source venv/bin/activate' to get into your environment!"
