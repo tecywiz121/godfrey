@@ -12,12 +12,10 @@ def all_modules():
     pyfiles = [pyfile.replace(os.path.dirname(__file__) + "/", "") for pyfile in pyfiles]
     pyfiles = [pyfile.replace(".py", "") for pyfile in pyfiles]
     pyfiles = [pyfile for pyfile in pyfiles if not pyfile.startswith("__")]
-    print "pyfiles:", pyfiles
     feature_modules = [importlib.import_module("modules." + pyfile) for pyfile in pyfiles]
     feature_classes = []
     for m in feature_modules:
         feature_classes.extend([getattr(m, x) for x in dir(m) if not x.startswith("__")])
-    print feature_classes
     feature_classes = [x() for x in feature_classes if isinstance(x, type) and issubclass(x, module.Module)]
 
     return feature_classes
