@@ -18,7 +18,7 @@ class Parser(object):
         if not malt_mco:
             malt_mco = 'engmalt.linear-1.7'
 
-        self._parser = MaltParser(working_dir=malt_working_dir, mco=malt_mco)
+        self._parser = MaltParser(working_dir=malt_working_dir, mco=malt_mco, additional_java_args=['-Xmx512m'])
 
         for module in all_modules:
             for noun in module.nouns:
