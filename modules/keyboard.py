@@ -1,9 +1,14 @@
 import subprocess
 import module
-import win32api
+OS_WINDOWS = True
+try:
+    import win32api
+    from win32com.client import Dispatch
+    import win32com.client
+except ImportError:
+    OS_WINDOWS = False
+
 #from response import Response
-from win32com.client import Dispatch
-import win32com.client
 
 class keyboardCommand(module.Module):
 

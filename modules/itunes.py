@@ -1,30 +1,35 @@
 import subprocess
 import module
 #from response import Response
-from win32com.client import Dispatch
-import win32com.client
+OS_WINDOWS = True
+try:
+    from win32com.client import Dispatch
+    import win32com.client
+except ImportError:
+    OS_WINDOWS = False
 
 class itunesModule(module.Module):
     ''''''
     def winSuffleAll(self, trackNum):
-		iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
-		source = iTunes.LibrarySource
-		playlists = source.Playlists
-		
-		try:
-		    playlist = playlists(trackNum)
-		    tracks = playlist.Tracks
-		    track = tracks.ItemByPlayOrder(trackNum)
-		    print track.Name
-		    track.Play()
-		except:
-			print "Failed to play song, check iTunes for message"
-		
-		#playlist = playlists(2)
-		#tracks = playlist.Tracks
-		#track = tracks.ItemByPlayOrder(2)
-		#print track.Name
-		#track.Play()
+        if OS_WINDOWS:
+    		iTunes = win32com.client.gencache.EnsureDispatch("iTunes.Application")
+    		source = iTunes.LibrarySource
+    		playlists = source.Playlists
+    		
+    		try:
+    		    playlist = playlists(trackNum)
+    		    tracks = playlist.Tracks
+    		    track = tracks.ItemByPlayOrder(trackNum)
+    		    print track.Name
+    		    track.Play()
+    		except:
+    			print "Failed to play song, check iTunes for message"
+    		
+    		#playlist = playlists(2)
+    		#tracks = playlist.Tracks
+    		#track = tracks.ItemByPlayOrder(2)
+    		#print track.Name
+    		#track.Play()
 		
     @property
     def verbs(self):
