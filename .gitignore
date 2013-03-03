@@ -36,3 +36,6 @@ nosetests.xml
 
 # Virtual Environment
 venv*
+
+# Maltparse shtuff
+maltparse
