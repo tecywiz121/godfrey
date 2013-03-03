@@ -7,7 +7,6 @@ import os
 
 def all_modules():
     '''Return a list of all feature modules for use in godfrey.'''
-    print "__file__:", os.path.dirname(__file__)
     pyfiles = glob.glob(os.path.dirname(__file__) + "/*.py")
     pyfiles = [pyfile.replace(os.path.dirname(__file__) + "/", "") for pyfile in pyfiles]
     pyfiles = [pyfile.replace(".py", "") for pyfile in pyfiles]

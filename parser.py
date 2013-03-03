@@ -45,6 +45,7 @@ class Parser(object):
         pos = pos_tag(words)
         graph = self._parser.tagged_parse(pos)
         tree = graph.tree()
+        print "Parse Tree: ", tree
 
         c_noun = None
         c_verb = None
