@@ -30,7 +30,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 PIP_INSTALL_PID=$!
 
-echo "import nltk; nltk.download(); exit()" > python
+echo "import nltk; nltk.download(); exit()" | python
 
 # done!
 echo "######################################################################"
