@@ -16,12 +16,14 @@ class sysVolume(module.Module):
         myKeyboard = keyboard.keyboardCommand()
         print 'Pressing the volume up button'
         for x in range(0, 10):
+            print '+' + str(x)
             myKeyboard.winPressKey('volume_up')
         
     def winVolumeDown(self):
         myKeyboard = keyboard.keyboardCommand()
         print 'Pressing the volume down button'
         for x in range(0, 10):
+            print '-' + str(x)
             myKeyboard.winPressKey('volume_down')
         
 	#def volumeDown(self):
