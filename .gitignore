@@ -1,3 +1,5 @@
+maltparse
+*.tar.gz
 *.py[cod]
 
 # C extensions
